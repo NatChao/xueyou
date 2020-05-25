@@ -1,0 +1,199 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.layui-nav{
+    padding: 0 20px 0px 0px;
+}
+.layui-card {
+    float: left;
+    margin: 20px 60px;
+}
+.layui-layout-body {
+    overflow: auto;
+}
+.layui-layout-admin .layui-body {
+    position: unset;
+    top: 60px;
+    bottom: 44px;
+    background-color: #dfe6e9;
+}
+.layui-table, .layui-table-view {
+    margin: 10px 0;
+    clear: both;
+}
+.layui-layer-dialog {
+    top: 50px;
+    min-width: 260px;
+}
+
+.layout-l{
+    width: 660px;
+    float: left;
+}
+.layout-r{
+    width: 280px;
+    float: right;
+}
+.layui-tab-content {
+    background-color: #fff;
+    padding: 10px;
+}
+
+.forum-body{
+    position: unset;
+    left: 0px;
+    width: 1000px;
+    height: 1000px;
+    margin: 20px auto;
+
+}
+
+.forum-nav-item{
+    float: right;
+}
+/*log图片*/
+.forum-nav-img{
+    width: 146px;
+    height: 64px;
+    float: left;
+
+}
+.forum-card{
+    float: left;
+    margin: 20px 10px;
+}
+
+.forum-card-body{
+    position: relative;
+    padding: 10px 15px;
+    line-height: 24px;
+    width: 280px;
+    float: left;
+}
+.forum-layout{
+    margin: 20px 20px;
+}
+
+
+.member-no-login {
+    width: 280px;
+    height: 85px;
+    position: relative;
+    z-index: 1;
+}
+.member-no-login .avatar {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+.member-no-login .avatar img {
+    width: 78px;
+    height: 78px;
+}
+.member-no-login .welcomes {
+    font-size: 14px;
+    line-height: 12px;
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    left: 80px;
+}
+.member-no-login .quick-link {
+    font-size: 14px;
+    line-height: 20px;
+    padding-top: 4px;
+    border-top: dotted 1px #E7E7E7;
+    position: absolute;
+    z-index: 1;
+    top: 14px;
+    left: 80px;
+}
+.group-theme-list {
+    margin-top: 16px;
+}
+.group-theme-list ul li {
+    font-size: 14px;
+    line-height: 24px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    overflow: hidden;
+}
+.group-theme-list li {
+    clear: both;
+    padding: 14px 0;
+    border-bottom: solid 1px #E5ECEE;
+    position: relative;
+    z-index: auto;
+}
+.recommend-group {
+    clear: both;
+    padding-top: 20px;
+}
+.recommend-group a{
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/*tab大小设置*/
+.forum-tab-size{
+    width:450px;
+    height:460px;
+    margin: 20px;
+}
+.btn{
+    font-size: 14px;
+    color: #909399;
+}
+.group-info {
+    display: block;
+    height: 76px;
+    padding: 8px 10px 12px 95px;
+    border: solid 1px #E5ECEE;
+    margin: 1px;
+    position: relative;
+    z-index: 1;
+}
+group-info:hover {
+    background-color: #F4FBF4;
+    border-width: 2px;
+    border-color: #68C082;
+    margin: 0;
+    box-shadow: 4px 3px 4px rgba(102,102,102,0.1);
+}
+.group-name {
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0 0 5px 0;
+}
+.group-name a { }
+.group-pic {
+    background-color: #F7F7F7;
+    width: 64px; height: 64px;
+    padding: 5px;
+    border: solid 1px #E7E7E7;
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 8px;
+}
+.group-pic img {
+    max-width: 64px;
+    max-height: 64px;
+}
+ dd {
+     line-height: 18px;
+     color: #666;
+ }
+.group-intro {
+    color: #999;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

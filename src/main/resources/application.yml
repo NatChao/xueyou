@@ -1,0 +1,18 @@
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/learning_platform?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: timi666
+
+
+server:
+  servlet:
+    context-path: /lp
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.xueyouwang.entity
