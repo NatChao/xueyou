@@ -1,10 +1,14 @@
 package com.xueyouwang.xueyou.service;
 
+import com.xueyouwang.xueyou.entity.Result;
 import com.xueyouwang.xueyou.entity.User;
 
 public interface UserService {
 
     //用户登入
-    void login(User user);
+    Result login(User user);
+
+    //用户注册
+    Result register(User user);
 
 }

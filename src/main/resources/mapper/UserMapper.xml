@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xueyouwang.xueyou.dao.UserDao">
+
+    <!-- 保存用户 -->
+    <insert id="save" parameterType="com.xueyouwang.xueyou.entity.User">
+        insert into tb_user values (#{id}, #{userName}, #{password}, #{headPortrait}, #{gender}, #{createTime})
+    </insert>
+
+    <select id="selectUserName" parameterType="java.lang.String" resultType="com.xueyouwang.xueyou.entity.User">
+        select * from tb_user where user_name = #{userName}
+    </select>
+
+</mapper>

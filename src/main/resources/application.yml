@@ -15,4 +15,4 @@ server:
     context-path: /lp
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.xueyouwang.entity
+  type-aliases-package: com.xueyouwang.xueyou.entity
