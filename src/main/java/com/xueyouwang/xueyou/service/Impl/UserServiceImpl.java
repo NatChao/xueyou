@@ -8,6 +8,9 @@ import com.xueyouwang.xueyou.service.UserService;
 import com.xueyouwang.xueyou.utlis.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 
 @Service
@@ -38,13 +41,16 @@ public class UserServiceImpl implements UserService {
      * @param user
      * @return
      */
-    //缺少设置session信息、
     @Override
-    public Result login(User user) {
+    public Result login(User user, HttpServletRequest request) {
         String password = Util.getMD5(user.getPassword()); //将用户输入密码进行MD5加密
         User userBean = userDao.selectUserName(user.getUserName());
-        if (userBean != null && userBean.getPassword().equals(password))
+        if (userBean != null && userBean.getPassword().equals(password)){
+            HttpSession session = request.getSession();
+            session.setAttribute("user", userBean);
+            session.setMaxInactiveInterval(60 * 30); //设置session状态时间为30分钟
             return ResponseResult.genSuccessResult("登录成功");
+        }
         return ResponseResult.genFailResult("用户名或密码错误");
     }
 

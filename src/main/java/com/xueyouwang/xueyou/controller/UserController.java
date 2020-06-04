@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController()
@@ -32,8 +35,8 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/login", method = POST)
-    public Result login(@RequestBody User user){
-        return userService.login(user);
+    public Result login(User user, HttpServletRequest request){
+        return userService.login(user, request);
     }
 
 }

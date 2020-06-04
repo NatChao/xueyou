@@ -20,15 +20,15 @@
 </head>
 
 <body>
-<div class="d1">
-    <audio src="./static/music/三亩地 - 城南花已开.mp3" autoplay loop></audio>
-    <form class="box" action="/lp/user/login" method="POST">
-        <h1 >Login</h1>
-        <input type="text" name="userName" placeholder="userName">
-        <input type="password" name="password" placeholder="password">
-        <input type="submit" name="" value="Login">
-    </form>
-</div>
+    <div class="d1">
+        <audio src="./static/music/三亩地 - 城南花已开.mp3" autoplay loop></audio>
+        <form class="box" action="/lp/user/login" method="POST">
+            <h1 >Login</h1>
+            <input type="text" name="userName" placeholder="userName">
+            <input type="password" name="password" placeholder="password">
+            <input type="submit" name="" value="Login">
+        </form>
+    </div>
 </body>
 
 </html>
