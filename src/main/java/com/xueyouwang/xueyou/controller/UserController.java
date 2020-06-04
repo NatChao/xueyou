@@ -1,6 +1,6 @@
 package com.xueyouwang.xueyou.controller;
 
-import com.xueyouwang.xueyou.entity.Result;
+import com.xueyouwang.xueyou.utlis.Result;
 import com.xueyouwang.xueyou.entity.User;
 import com.xueyouwang.xueyou.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,6 @@ public class UserController {
      */
     @RequestMapping(value = "/register", method = POST)
     public Result register(@RequestBody User user){
-        System.out.println("user :" + user);
         return userService.register(user);
     }
 
@@ -34,8 +33,7 @@ public class UserController {
      */
     @RequestMapping(value = "/login", method = POST)
     public Result login(@RequestBody User user){
-
-        return null;
+        return userService.login(user);
     }
 
 }

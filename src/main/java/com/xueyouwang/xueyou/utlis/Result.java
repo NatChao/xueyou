@@ -1,4 +1,4 @@
-package com.xueyouwang.xueyou.entity;
+package com.xueyouwang.xueyou.utlis;
 
 import com.alibaba.fastjson.JSON;
 

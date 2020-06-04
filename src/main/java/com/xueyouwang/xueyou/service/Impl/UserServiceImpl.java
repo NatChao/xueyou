@@ -1,7 +1,7 @@
 package com.xueyouwang.xueyou.service.Impl;
 
 import com.xueyouwang.xueyou.dao.UserDao;
-import com.xueyouwang.xueyou.entity.Result;
+import com.xueyouwang.xueyou.utlis.Result;
 import com.xueyouwang.xueyou.entity.User;
 import com.xueyouwang.xueyou.response.ResponseResult;
 import com.xueyouwang.xueyou.service.UserService;

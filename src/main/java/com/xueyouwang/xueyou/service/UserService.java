@@ -1,6 +1,6 @@
 package com.xueyouwang.xueyou.service;
 
-import com.xueyouwang.xueyou.entity.Result;
+import com.xueyouwang.xueyou.utlis.Result;
 import com.xueyouwang.xueyou.entity.User;
 
 public interface UserService {

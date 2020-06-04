@@ -1,7 +1,7 @@
 package com.xueyouwang.xueyou.response;
 
-import com.xueyouwang.xueyou.entity.Result;
-import com.xueyouwang.xueyou.entity.ResultCode;
+import com.xueyouwang.xueyou.utlis.Result;
+import com.xueyouwang.xueyou.utlis.ResultCode;
 
 /**
  * @author wangkui
