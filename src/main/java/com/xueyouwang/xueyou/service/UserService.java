@@ -13,4 +13,6 @@ public interface UserService {
     //用户注册
     Result register(User user);
 
+    //用户注销
+    Result cancellation(HttpServletRequest request);
 }

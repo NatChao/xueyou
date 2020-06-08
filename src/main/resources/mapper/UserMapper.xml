@@ -11,4 +11,8 @@
         select * from tb_user where user_name = #{userName}
     </select>
 
+    <select id="selectUserById" parameterType="com.xueyouwang.xueyou.entity.User">
+        select * from tb_user where id = #{id}
+    </select>
+
 </mapper>

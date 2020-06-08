@@ -10,4 +10,7 @@ public interface UserDao {
 
     //根据用户名查询账户
     User selectUserName(@Param("userName") String userName);
+
+    //根据用户id查询
+    User selectUserById(Long id);
 }

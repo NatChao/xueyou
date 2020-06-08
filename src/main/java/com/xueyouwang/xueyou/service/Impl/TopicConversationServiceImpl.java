@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 话题实现类
@@ -29,22 +30,42 @@ public class TopicConversationServiceImpl implements TopicConversationService {
             topicConversation.setCreateTime(LocalDateTime.now());
             topicConversationDao.insertTopicConversation(topicConversation);
             return ResponseResult.genSuccessResult();
+        }else {
+            return ResponseResult.genFailResult("创建话题失败，请登录后重试。");
         }
-        return ResponseResult.genFailResult("创建话题失败");
     }
 
     @Override
-    public Result deleteTopicConversation(Long id) {
-        return null;
+    public Result deleteTopicConversation(Long id, HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null){
+            topicConversationDao.deleteTopicConversation(id);
+            return ResponseResult.genSuccessResult();
+        }else {
+            return ResponseResult.genFailResult("删除话题失败，请登录后重试。");
+        }
     }
 
     @Override
-    public Result updateTopicConversation(TopicConversation topicConversation, Long userId) {
-        return null;
+    public Result updateTopicConversation(TopicConversation topicConversation, HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null){
+            topicConversationDao.updateTopicConversation(topicConversation);
+            return ResponseResult.genSuccessUpdateResult();
+        }else {
+            return ResponseResult.genFailResult("更改话题失败，请登录后重试。");
+        }
     }
 
     @Override
     public Result getAllTopicConversations() {
-        return null;
+            List<TopicConversation> allTopicConversations = topicConversationDao.getAllTopicConversations();
+            return ResponseResult.genSuccessResult(allTopicConversations);
+    }
+
+    @Override
+    public Result getTopicConversation(Long id) {
+        TopicConversation topicConversation = topicConversationDao.getTopicConversation(id);
+        return ResponseResult.genSuccessResult(topicConversation);
     }
 }

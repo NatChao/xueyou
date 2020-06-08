@@ -4,7 +4,43 @@
 
     <!-- 保存用户 -->
     <insert id="insertTopicConversation" parameterType="com.xueyouwang.xueyou.entity.TopicConversation">
-        insert into topic_conversation values (#{id}, #{userId}, #{title}, #{themePicture}, #{createTime}, #{views})
+        insert into tb_topic_conversation values (#{id}, #{userId}, #{title}, #{themePicture}, #{createTime}, #{views})
     </insert>
+
+    <delete id="deleteTopicConversation" parameterType="java.lang.Long">
+    delete from tb_topic_conversation
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+    <update id="updateTopicConversation" parameterType="com.xueyouwang.xueyou.entity.TopicConversation">
+        update tb_topic_conversation
+        <set>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="themePicture != null">
+                theme_picture = #{themePicture,jdbcType=VARCHAR},
+            </if>
+            <if test="creationTime != null">
+                creation_time = #{creationTime,jdbcType=DATETIME},
+            </if>
+            <if test="views != null">
+                views = #{views,jdbcType=INT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="getAllTopicConversations" resultType="com.xueyouwang.xueyou.entity.TopicConversation">
+        select * from tb_topic_conversation order by create_time desc
+    </select>
+
+    <select id="getAllTopicConversationsByUser" resultType="com.xueyouwang.xueyou.entity.TopicConversation">
+        select * from tb_topic_conversation where user_id = #{userId, jdbcType=BIGINT} order by create_time desc
+    </select>
+
+    <select id="getTopicConversation" resultType="com.xueyouwang.xueyou.entity.TopicConversation">
+        select * from tb_topic_conversation where id = #{id, jdbcType=BIGINT}
+    </select>
 
 </mapper>

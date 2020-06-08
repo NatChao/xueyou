@@ -35,8 +35,17 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/login", method = POST)
-    public Result login(User user, HttpServletRequest request){
+    public Result login(@RequestBody User user, HttpServletRequest request){
         return userService.login(user, request);
+    }
+
+    /**
+     * 退出登录(注销)
+     * @return
+     */
+    @RequestMapping(value = "/cancellation", method = POST)
+    public Result cancellation(HttpServletRequest request){
+        return userService.cancellation(request);
     }
 
 }

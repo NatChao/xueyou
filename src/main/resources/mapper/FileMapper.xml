@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xueyouwang.xueyou.dao.FileDao">
+
+    <insert id="addFile" parameterType="com.xueyouwang.xueyou.entity.FilePath">
+        insert into tb_files values (#{id}, #{userId}, #{fileName}, #{path}, #{size}, #{type}, #{downcounts},#{createTime})
+    </insert>
+
+    <select id="queryFiles" resultType="com.xueyouwang.xueyou.entity.FilePath">
+        select *
+        from tb_files;
+    </select>
+
+    <select id="queryFileById" resultType="com.xueyouwang.xueyou.entity.FilePath">
+        select * from tb_files where id = #{id};
+    </select>
+</mapper>

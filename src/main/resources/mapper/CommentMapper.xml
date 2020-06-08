@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xueyouwang.xueyou.dao.CommentDao">
+
+    <insert id="insertComment" parameterType="com.xueyouwang.xueyou.entity.Comment">
+        insert into tb_comment values (#{id}, #{userId}, #{title}, #{themePicture}, #{createTime}, #{views})
+    </insert>
+
+    <update id="deleteComment">
+        update tb_comment
+        <set>
+                state = 0
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="getTopicConversationComments" resultType="com.xueyouwang.xueyou.entity.Comment">
+        select * from tb_comment where topic_conversation_id = #{topicConversationId}
+        and state != 0
+        order by create_time asc
+    </select>
+
+    <select id="selectComment" resultType="com.xueyouwang.xueyou.entity.Comment">
+        select * from tb_comment where user_id = #{userId, jdbcType=BIGINT} order by create_time desc
+    </select>
+
+</mapper>

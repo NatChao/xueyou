@@ -64,7 +64,7 @@
               <dd class="avatar"><img src="./static/icon/log.jpg"> </dd>
               <dd class="welcomes">您好,欢迎来到<strong>学习交流圈子</strong></dd>
               <dd class="quick-link"> 如果您已经是会员请<a href="./login.jsp" nctype="login" class="url">[登录]</a>后进行操作;<br>
-                或现在就<a href="#" class="url">[注册]</a>成为会员。</dd>
+                或现在就<a href="./register.jsp" class="url">[注册]</a>成为会员。</dd>
             </dl>
             <div class="group-theme-list">
               <ul>

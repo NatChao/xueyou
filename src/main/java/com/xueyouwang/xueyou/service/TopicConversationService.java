@@ -9,9 +9,11 @@ public interface TopicConversationService {
 
     Result insertTopicConversation(TopicConversation topicConversation, HttpServletRequest request);
 
-    Result deleteTopicConversation(Long id);
+    Result deleteTopicConversation(Long id, HttpServletRequest request);
 
-    Result updateTopicConversation(TopicConversation topicConversation, Long userId);
+    Result updateTopicConversation(TopicConversation topicConversation, HttpServletRequest request);
 
     Result getAllTopicConversations();
+
+    Result getTopicConversation(Long id);
 }
