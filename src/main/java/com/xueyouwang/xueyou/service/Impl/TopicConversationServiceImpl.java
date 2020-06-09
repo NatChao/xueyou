@@ -1,6 +1,6 @@
 package com.xueyouwang.xueyou.service.Impl;
 
-import com.xueyouwang.xueyou.dao.TopicConversationDao;
+import com.xueyouwang.xueyou.dao.TopicConversationMapper;
 import com.xueyouwang.xueyou.entity.TopicConversation;
 import com.xueyouwang.xueyou.entity.User;
 import com.xueyouwang.xueyou.response.ResponseResult;
@@ -20,7 +20,7 @@ import java.util.List;
 public class TopicConversationServiceImpl implements TopicConversationService {
 
     @Autowired
-    private TopicConversationDao topicConversationDao;
+    private TopicConversationMapper topicConversationMapper;
 
     @Override
     public Result insertTopicConversation(TopicConversation topicConversation, HttpServletRequest request) {
@@ -28,7 +28,7 @@ public class TopicConversationServiceImpl implements TopicConversationService {
         if (user != null){
             topicConversation.setUserId(user.getId());
             topicConversation.setCreateTime(LocalDateTime.now());
-            topicConversationDao.insertTopicConversation(topicConversation);
+            topicConversationMapper.insertSelective(topicConversation);
             return ResponseResult.genSuccessResult();
         }else {
             return ResponseResult.genFailResult("创建话题失败，请登录后重试。");
@@ -39,7 +39,7 @@ public class TopicConversationServiceImpl implements TopicConversationService {
     public Result deleteTopicConversation(Long id, HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
         if (user != null){
-            topicConversationDao.deleteTopicConversation(id);
+            topicConversationMapper.deleteByPrimaryKey(id);
             return ResponseResult.genSuccessResult();
         }else {
             return ResponseResult.genFailResult("删除话题失败，请登录后重试。");
@@ -50,7 +50,7 @@ public class TopicConversationServiceImpl implements TopicConversationService {
     public Result updateTopicConversation(TopicConversation topicConversation, HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
         if (user != null){
-            topicConversationDao.updateTopicConversation(topicConversation);
+            topicConversationMapper.updateByPrimaryKeySelective(topicConversation);
             return ResponseResult.genSuccessUpdateResult();
         }else {
             return ResponseResult.genFailResult("更改话题失败，请登录后重试。");
@@ -59,13 +59,13 @@ public class TopicConversationServiceImpl implements TopicConversationService {
 
     @Override
     public Result getAllTopicConversations() {
-            List<TopicConversation> allTopicConversations = topicConversationDao.getAllTopicConversations();
+            List<TopicConversation> allTopicConversations = topicConversationMapper.getAllTopicConversations();
             return ResponseResult.genSuccessResult(allTopicConversations);
     }
 
     @Override
     public Result getTopicConversation(Long id) {
-        TopicConversation topicConversation = topicConversationDao.getTopicConversation(id);
+        TopicConversation topicConversation = topicConversationMapper.selectByPrimaryKey(id);
         return ResponseResult.genSuccessResult(topicConversation);
     }
 }

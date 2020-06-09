@@ -14,6 +14,7 @@
     <script src="../layui/layui.js"></script>
     <link rel="stylesheet" href="../static/css/forum.css">
 </head>
+
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <%--教务系统登录--%>

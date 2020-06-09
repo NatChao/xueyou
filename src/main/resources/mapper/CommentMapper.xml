@@ -1,27 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xueyouwang.xueyou.dao.CommentDao">
+<mapper namespace="com.xueyouwang.xueyou.dao.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.xueyouwang.xueyou.entity.Comment">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="topic_conversation_id" jdbcType="BIGINT" property="topicConversationId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="give_like" jdbcType="INTEGER" property="giveLike" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="reply_id" jdbcType="BIGINT" property="replyId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, topic_conversation_id, user_id, content, give_like, create_time, state, reply_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_comment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_comment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xueyouwang.xueyou.entity.Comment">
+    insert into tb_comment (id, topic_conversation_id, user_id, 
+      content, give_like, create_time, 
+      state, reply_id)
+    values (#{id,jdbcType=BIGINT}, #{topicConversationId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{content,jdbcType=VARCHAR}, #{giveLike,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=INTEGER}, #{replyId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xueyouwang.xueyou.entity.Comment">
+    insert into tb_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="topicConversationId != null">
+        topic_conversation_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="giveLike != null">
+        give_like,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="replyId != null">
+        reply_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="topicConversationId != null">
+        #{topicConversationId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="giveLike != null">
+        #{giveLike,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="replyId != null">
+        #{replyId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xueyouwang.xueyou.entity.Comment">
+    update tb_comment
+    <set>
+      <if test="topicConversationId != null">
+        topic_conversation_id = #{topicConversationId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="giveLike != null">
+        give_like = #{giveLike,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="replyId != null">
+        reply_id = #{replyId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xueyouwang.xueyou.entity.Comment">
+    update tb_comment
+    set topic_conversation_id = #{topicConversationId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      content = #{content,jdbcType=VARCHAR},
+      give_like = #{giveLike,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      reply_id = #{replyId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
 
-    <insert id="insertComment" parameterType="com.xueyouwang.xueyou.entity.Comment">
-        insert into tb_comment values (#{id}, #{userId}, #{title}, #{themePicture}, #{createTime}, #{views})
-    </insert>
+  <update id="deleteComment">
+    update tb_comment
+    <set>
+      state = 0
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
 
-    <update id="deleteComment">
-        update tb_comment
-        <set>
-                state = 0
-        </set>
-        where id = #{id,jdbcType=BIGINT}
-    </update>
-
-    <select id="getTopicConversationComments" resultType="com.xueyouwang.xueyou.entity.Comment">
+  <select id="getTopicConversationComments" resultMap="BaseResultMap">
         select * from tb_comment where topic_conversation_id = #{topicConversationId}
         and state != 0
         order by create_time asc
     </select>
-
-    <select id="selectComment" resultType="com.xueyouwang.xueyou.entity.Comment">
-        select * from tb_comment where user_id = #{userId, jdbcType=BIGINT} order by create_time desc
-    </select>
-
 </mapper>

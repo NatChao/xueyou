@@ -1,17 +1,26 @@
 package com.xueyouwang.xueyou.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Comment {
-
+public class Comment implements Serializable {
     private Long id;
+
     private Long topicConversationId;
+
     private Long userId;
+
     private String content;
+
     private Integer giveLike;
+
     private LocalDateTime createTime;
+
     private Integer state;
+
     private Long replyId;
+
+    private static final long serialVersionUID = 1L;
 
     public Long getId() {
         return id;
@@ -42,7 +51,7 @@ public class Comment {
     }
 
     public void setContent(String content) {
-        this.content = content;
+        this.content = content == null ? null : content.trim();
     }
 
     public Integer getGiveLike() {

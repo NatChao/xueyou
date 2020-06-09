@@ -8,6 +8,7 @@ public class UserBO extends User {
     public void setUser(User user){
         this.setId(user.getId());
         this.setUserName(user.getUserName());
+        this.setNickName(user.getNickName());
         this.setGender(user.getGender());
         this.setHeadPortrait(user.getHeadPortrait());
         this.setCreateTime(user.getCreateTime());

@@ -1,5 +1,6 @@
 package com.xueyouwang.xueyou.service;
 
+import com.xueyouwang.xueyou.utlis.FileUtil;
 import com.xueyouwang.xueyou.utlis.Result;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,9 +13,9 @@ public interface FileService {
     Result uploadFile(MultipartFile file , HttpServletRequest request);
 
     //下载资源文件
-    Result downloadFile(HttpServletRequest request, HttpServletResponse response);
+    Result downloadFile(String fileName, HttpServletResponse response);
 
     //查询所有文件资源列表
-    Result queryFiles();
+    FileUtil queryFiles();
 
 }

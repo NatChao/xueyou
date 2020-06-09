@@ -1,16 +1,22 @@
 package com.xueyouwang.xueyou.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-//话题
-public class TopicConversation {
-
+public class TopicConversation implements Serializable {
     private Long id;
+
     private Long userId;
+
     private String title;
+
     private String themePicture;
+
     private LocalDateTime createTime;
-    private int views;
+
+    private Integer views;
+
+    private static final long serialVersionUID = 1L;
 
     public Long getId() {
         return id;
@@ -33,7 +39,7 @@ public class TopicConversation {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = title == null ? null : title.trim();
     }
 
     public String getThemePicture() {
@@ -41,7 +47,7 @@ public class TopicConversation {
     }
 
     public void setThemePicture(String themePicture) {
-        this.themePicture = themePicture;
+        this.themePicture = themePicture == null ? null : themePicture.trim();
     }
 
     public LocalDateTime getCreateTime() {
@@ -52,11 +58,11 @@ public class TopicConversation {
         this.createTime = createTime;
     }
 
-    public int getViews() {
+    public Integer getViews() {
         return views;
     }
 
-    public void setViews(int views) {
+    public void setViews(Integer views) {
         this.views = views;
     }
 }

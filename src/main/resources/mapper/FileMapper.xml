@@ -7,8 +7,7 @@
     </insert>
 
     <select id="queryFiles" resultType="com.xueyouwang.xueyou.entity.FilePath">
-        select *
-        from tb_files;
+        select * from tb_files;
     </select>
 
     <select id="queryFileById" resultType="com.xueyouwang.xueyou.entity.FilePath">

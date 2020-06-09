@@ -1,7 +1,9 @@
 package com.xueyouwang.xueyou.controller;
 
 import com.xueyouwang.xueyou.service.FileService;
+import com.xueyouwang.xueyou.utlis.FileUtil;
 import com.xueyouwang.xueyou.utlis.Result;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,13 +30,13 @@ public class FileController {
 
     /**
      * 资源文件下载接口
-     * @param request
+     * @param fileName
      * @param response
      * @return
      */
     @RequestMapping("/download")
-    public Result downloadFile(HttpServletRequest request, HttpServletResponse response) {
-        return fileService.downloadFile(request, response);
+    public Result downloadFile(@Param("fileName") String fileName, HttpServletResponse response) {
+        return fileService.downloadFile(fileName, response);
     }
 
     /**
@@ -43,7 +45,7 @@ public class FileController {
      */
     @RequestMapping(value="/queryFiles" , method = RequestMethod.GET)
     @ResponseBody
-    public Result queryFiles(){
+    public FileUtil queryFiles(){
         return fileService.queryFiles();
     }
 

@@ -61,9 +61,7 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public Result downloadFile(HttpServletRequest request, HttpServletResponse response) {
-        String fileName = null;// 设置文件名，根据业务需要替换成要下载的文件名
-        fileName = request.getParameter("Filename");
+    public Result downloadFile(String fileName, HttpServletResponse response) {
         try {
             fileName = URLDecoder.decode(fileName, "UTF-8");
         } catch (UnsupportedEncodingException e) {
@@ -115,14 +113,14 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public Result queryFiles() {
+    public FileUtil queryFiles() {
         List<FilePath> fileList = fileDao.queryFiles();
         for (FilePath filePath : fileList) {
             System.out.println(filePath.getFileName());
         }
         FileUtil fileUtil = new FileUtil();
         fileUtil.setData(fileList);
-        return ResponseResult.genSuccessResult(fileUtil);
+        return fileUtil;
     }
 
 }

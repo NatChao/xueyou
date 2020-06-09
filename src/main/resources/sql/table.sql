@@ -1,13 +1,14 @@
 -- User用户表
 CREATE TABLE `tb_user` (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT '自增id',
-  `user_name` varchar(50) NOT NULL COMMENT '用户名',
+  `user_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名(账号)',
+  `nick_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '昵称',
   `password` varchar(50) NOT NULL COMMENT '密码',
   `head_portrait` varchar(255) DEFAULT NULL COMMENT '用户头像',
   `gender` int DEFAULT NULL COMMENT '性别(0：男性，1：女性)',
   `create_time` datetime DEFAULT NULL COMMENT '账户创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- 话题表
 CREATE TABLE `tb_topic_conversation` (

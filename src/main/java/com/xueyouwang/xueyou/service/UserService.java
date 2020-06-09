@@ -1,7 +1,7 @@
 package com.xueyouwang.xueyou.service;
 
-import com.xueyouwang.xueyou.utlis.Result;
 import com.xueyouwang.xueyou.entity.User;
+import com.xueyouwang.xueyou.utlis.Result;
 
 import javax.servlet.http.HttpServletRequest;
 
