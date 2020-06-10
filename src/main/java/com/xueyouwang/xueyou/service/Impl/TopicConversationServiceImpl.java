@@ -68,4 +68,10 @@ public class TopicConversationServiceImpl implements TopicConversationService {
         TopicConversation topicConversation = topicConversationMapper.selectByPrimaryKey(id);
         return ResponseResult.genSuccessResult(topicConversation);
     }
+
+    @Override
+    public Result getRotationChart() {
+        List<TopicConversation> rotationChartList = topicConversationMapper.getRotationChart();
+        return ResponseResult.genSuccessResult(rotationChartList);
+    }
 }

@@ -71,5 +71,9 @@ public class TopicConversationController {
         return topicConversationService.getTopicConversation(id);
     }
 
+    @GetMapping("/getRotationChart")
+    public Result getRotationChart(){
+        return topicConversationService.getRotationChart();
+    }
 
 }

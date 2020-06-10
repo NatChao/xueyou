@@ -22,4 +22,8 @@ public interface TopicConversationMapper {
 
     //获取个人用户的所有话题
     List<TopicConversation> getAllTopicConversationsByUser(Long userId);
+
+    //获取首页轮播图的话题数据
+    List<TopicConversation> getRotationChart();
+
 }

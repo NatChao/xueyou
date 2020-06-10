@@ -111,4 +111,10 @@
   <select id="getAllTopicConversationsByUser" resultMap="BaseResultMap">
         select * from tb_topic_conversation where user_id = #{userId, jdbcType=BIGINT} order by create_time desc
     </select>
+
+  <select id="getRotationChart" resultMap="BaseResultMap">
+    select * from tb_topic_conversation WHERE theme_picture is not null
+    and theme_picture != ""
+  </select>
+
 </mapper>

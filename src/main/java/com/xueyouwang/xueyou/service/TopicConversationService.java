@@ -16,4 +16,6 @@ public interface TopicConversationService {
     Result getAllTopicConversations();
 
     Result getTopicConversation(Long id);
+
+    Result getRotationChart();
 }

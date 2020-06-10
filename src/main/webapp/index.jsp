@@ -76,19 +76,40 @@
           <div id="light" class="white_content" >
             <table border="3" align="center" >
               <tr>
-                <td align="center"><pre><h4>主题</h4></pre></td><td><input type="text" size="60" name="subject"></td>
+                <td align="center"><pre><h4>主题</h4></pre></td><td><input type="text" size="60" name="subject" id="title01"></td>
               </tr>
               <tr>
                 <td height="200px" width="200px" align="center"><pre><h4>图片</h4></pre></td>
-                <td><button type="button" class="layui-btn" onchange="changepic(this)" accept="image/jpg,image/jpeg,image/png,image/PNG">
+                <td><button type="button" class="layui-btn" id="themePicture" onchange="changepic(this)" accept="image/jpg,image/jpeg,image/png,image/PNG">
                   上传图片</button></td>
               </tr>
             </table>
-            <button type="button" class="layui-btn" id="">提交话题</button>
+            <button type="button" class="layui-btn" onclick="insertTopicConversation();">提交话题</button>
             <button class="layui-btn" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">取消</button></div>
           <div id="fade" class="black_overlay"></div>
-
         </li>
+
+        <%-- 提交话题 --%>
+        <script type="text/javascript">
+            insertTopicConversation = function () {
+                $.post({
+                    url : "/topicConversation/insert",
+                    contentType :"application/json",
+                    dataType:"json",
+                    data : JSON.stringify({"title" : $("#title01").val(), "themePicture" : $("#themePicture").val()}),
+                    success : function (data) {
+                        console.log(data)
+                        if (data.code == 200) {
+                            //判断后端返回的数据状态码、如果是200
+                            console.log(data)
+                        }else {
+                            alert(data.message)
+                        }
+                    }
+                })
+            }
+        </script>
+
 
         <li class="layui-nav-item">
           <a href="javascript:;">
@@ -144,14 +165,48 @@
       <div class="layout-l">
         <div class="layui-carousel" id="test1">
           <div carousel-item>
-            <div>条目1</div>
-            <div>条目2</div>
+            <div id="rotationChart"><img src="https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00043-1648.jpg"></div>
+<%--            <div>条目2</div>
             <div>条目3</div>
             <div>条目4</div>
-            <div>条目5</div>
+            <div>条目5</div>--%>
           </div>
         </div>
       </div>
+
+       <script type="text/javascript">
+         function rotationChart() {
+             $.ajax({
+                 url : "/topicConversation/getRotationChart",
+                 contentType :"application/json",
+                 dataType:"json",
+                 async : false,
+                 success : function (data) {
+                     if (data.code == 200) {
+                         console.log(data)
+
+                         //遍历数据、添加到轮播图中
+/*                         var ImageContent = "";
+                         $.each(data.indexOf("rotationChartList"), function (index, val) {
+                             if (val.length > 0) {
+                                 for (var i = 0; i <= 5; i++) {
+                                     ImageContent += '<span>key:"' + val[i].ID + '";</span><span>value:"' + val[i].valName + '"</span>';
+                                 }
+                                 $('#rotationChart').html(ImageContent);
+                             }
+                         });*/
+                     }else {
+                         alert(data.message)
+                     }
+                 }
+             })
+         }
+
+         rotationChart();
+       </script>
+
+
+
       <%--登录界面--%>
       <div class="layout-r">
         <div class="layout-r">
